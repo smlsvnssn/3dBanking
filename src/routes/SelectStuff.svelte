@@ -1,0 +1,54 @@
+<script>
+	import * as ö from 'ouml'
+
+	export let stuff
+	export let accounts
+	export let selectedStuff
+	export let selectedAccount
+</script>
+
+<div class="form">
+	Hur många
+	<select name="stuff" bind:value={selectedStuff} id="stuff-select">
+		{#each stuff as thing, i}
+			<option value={i}>{thing.name}</option>
+		{/each}
+	</select>
+	har jag på
+	<select name="account" bind:value={selectedAccount} id="account-select">
+		{#each accounts as account, i}
+			<option value={i}>{account.name}</option>
+		{/each}
+	</select>
+	just nu?
+</div>
+
+<style lang="scss">
+	.form {
+		padding: 1rem 2rem;
+
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		justify-self: stretch;
+
+		font-size: 0.875rem;
+
+		// text-align: center;
+
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 8px;
+	}
+
+	select {
+		padding: 0.5rem 3rem 0.5rem 1rem;
+		-webkit-appearance: none;
+		border-radius: 0.25rem;
+		background: url('$lib/assets/chevron/chevron_down_24.svg') #fff;
+		background-repeat: no-repeat;
+		background-position: top 50% right 0.5rem;
+		width: 100%;
+		font-size: 1rem;
+	}
+</style>
