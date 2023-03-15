@@ -9,6 +9,7 @@
 
 <Mesh
 	receiveShadow
+	position={{ y: -0.52 }}
 	geometry={new BoxBufferGeometry(400, 1, 400)}
 	material={new MeshStandardMaterial({
 		color: 0x00427a,

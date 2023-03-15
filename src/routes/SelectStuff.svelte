@@ -50,5 +50,9 @@
 		background-position: top 50% right 0.5rem;
 		width: 100%;
 		font-size: 1rem;
+
+		&:focus-visible {
+			outline: none;
+		}
 	}
 </style>
