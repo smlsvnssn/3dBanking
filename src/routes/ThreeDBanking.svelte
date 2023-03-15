@@ -1,15 +1,84 @@
 <script>
+	import AmountOfStuff from './AmountOfStuff.svelte'
 	import SelectStuff from './SelectStuff.svelte'
-
 	import Logo from './Logo.svelte'
+	import StuffEmitter from '$lib/stuffEmitter/StuffEmitter.svelte'
 	import * as ö from 'ouml'
 
+	import burger from '$lib/models/Hamburger.glb'
+	import bike from '$lib/models/Bike.glb'
+	import crisps from '$lib/models/Crisps.glb'
+	import puppy from '$lib/models/Puppy.glb'
+	import guitar from '$lib/models/Electric guitar.glb'
+	import halibut from '$lib/models/Halibut.glb'
+	import sofa from '$lib/models/Sofa.glb'
+	import shoe from '$lib/models/Trainer.glb'
+
 	const stuff = [
-		{ name: 'Chipspåsar', price: 30, model: 'TODO' },
-		{ name: 'Hamburgare', price: 120, model: 'TODO' },
-		{ name: 'Gösar', price: 650, model: 'TODO' },
-		{ name: 'Hundvalpar', price: 8500, model: 'TODO' },
-		{ name: 'Hörnsoffor', price: 12900, model: 'TODO' },
+		{
+			name: 'Chipspåsar',
+			price: 30,
+			model: crisps,
+			boxSize: [0.125, 0.5, 0.3],
+			position: { y: 0 },
+			scale: 0.5,
+		},
+		{
+			name: 'Hamburgare',
+			price: 120,
+			model: burger,
+			boxSize: [0.25, 0.165, 0.25],
+			position: { y: -0.2 },
+			scale: 6,
+		},
+		{
+			name: 'Skor',
+			price: 800,
+			model: shoe,
+			boxSize: [0.8, 0.3, 0.3],
+			position: { y: -0.3 },
+			scale: 0.15,
+		},
+		{
+			name: 'Färska hälleflundror',
+			price: 3600,
+			model: halibut,
+			boxSize: [1, 0.3, 3],
+			position: { y: 0 },
+			scale: 0.05,
+		},
+		{
+			name: 'Elgitarrer',
+			price: 4000,
+			model: guitar,
+			boxSize: [0.15, 2.5, 0.8],
+			position: { y: -0.9, x: -0.2 },
+			scale: 0.2,
+		},
+		{
+			name: 'Cyklar',
+			price: 7500,
+			model: bike,
+			boxSize: [0.2, 1, 2],
+			position: { y: -1, z: 1 },
+			scale: 3,
+		},
+		{
+			name: 'Hundvalpar',
+			price: 8500,
+			model: puppy,
+			boxSize: [0.2, 0.6, 0.8],
+			position: { y: 0 },
+			scale: 0.025,
+		},
+		{
+			name: 'Hörnsoffor',
+			price: 12900,
+			model: sofa,
+			boxSize: [2.5, 0.75, 2.5],
+			position: { x: 3, z: -3, y: -0.7 },
+			scale: 4,
+		},
 	]
 
 	const accounts = [
@@ -20,85 +89,26 @@
 	let selectedStuff = 0
 	let selectedAccount = 0
 
-	let percent = ö.randomNormal(0, 5)
-
-	$: amountOfStuff = ö.prettyNumber(
-		accounts[selectedAccount].amount / stuff[selectedStuff].price,
-	)
+	$: amountOfStuff =
+		accounts[selectedAccount].amount / stuff[selectedStuff].price
 </script>
 
 <Logo />
 
+<StuffEmitter stuff={stuff[selectedStuff]} {amountOfStuff} />
+
 <div class="wrapper">
 	<SelectStuff {stuff} {accounts} bind:selectedStuff bind:selectedAccount />
-	<div>
-		<h1 class="display-1">{amountOfStuff}</h1>
-		<h2 class="display-3">{stuff[selectedStuff].name}</h2>
-		<div class="counter">
-			<svg
-				width="12"
-				height="8"
-				viewBox="0 0 16 12"
-				style="transform:rotate({-percent * 2}deg);"
-			>
-				<path
-					fill={percent <= 0 ? 'var(--color-success)' : 'var(--wine)'}
-					d="M11.898 5.00007L8.32568 1.73846L9.67421 0.261475L15.9593 5.99997L9.67421 11.7385L8.32568 10.2615L11.8977 7.00007H0V5.00007H11.898Z"
-				/>
-			</svg>
-			<small>
-				{ö.prettyNumber(Math.abs(percent), 1)}% {percent >= 0
-					? 'mer'
-					: 'mindre'} än förra månaden
-			</small>
-		</div>
-	</div>
+	<AmountOfStuff name={stuff[selectedStuff].name} {amountOfStuff} />
 </div>
 
 <style lang="scss">
-	:global(body) {
-		background: radial-gradient(
-				50% 50% at 50% 50%,
-				rgba(0, 66, 122, 0) 0%,
-				rgba(0, 36, 66, 0.1) 100%
-			),
-			linear-gradient(
-				180deg,
-				rgba(0, 0, 0, 0.5) 0%,
-				rgba(129, 129, 129, 0) 66.67%,
-				rgba(255, 255, 255, 0.245) 100%
-			),
-			#00427a !important;
-		height: 100svh;
-	}
-
 	.wrapper {
-		display: grid;
-		gap: 3rem;
+		pointer-events: none;
+		position: absolute;
+		inset: 0;
 		color: var(--white);
-		margin: 8rem 2.5rem;
-	}
-
-	.counter {
-		text-align: center;
-		margin-top: 1rem;
-		color: var(--white);
-	}
-
-	h1,
-	h2 {
-		margin: 0;
-		color: var(--white);
-		text-align: center;
-	}
-	h1 {
-		font-size: 3.5rem;
-	}
-	h2 {
-		font-size: 1.5rem;
-	}
-	h6 {
-		margin: -0.5rem 0 0;
-		padding: 0 1rem 1rem;
+		margin: 8rem auto;
+		max-width: 32rem;
 	}
 </style>

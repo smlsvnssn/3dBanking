@@ -1,56 +1,43 @@
 <script>
+	import '../style.css'
 	import ThreeDBanking from './ThreeDBanking.svelte'
-
-	import Spinner from '$lib/components/Spinner.svelte'
-	import Tile from '$lib/globals/Tile.svelte'
-	import { currentUserPage } from '$lib/globals'
-	import { startPage } from '$lib/dataStores'
-	import UserPageMenu from '$lib/globals/UserPageMenu.svelte'
-	import EditStartPage from '$lib/globals/EditStartPage.svelte'
-	import pen from '$lib/assets/24pixels/pen_24.svg'
-
-	let edit = false
-
-	$currentUserPage = $startPage.name
 </script>
 
 <svelte:head>
-	<title>AppDemo - {$startPage.name}</title>
+	<title>3DBanking™</title>
 </svelte:head>
 
-<!-- <UserPageMenu /> -->
+<main>
+	<ThreeDBanking />
+</main>
 
-<ThreeDBanking />
-
-{#if edit}
-	<EditStartPage bind:edit />
-{/if}
-
-<!-- <div on:click={() => (edit = true)} class="imgWrapper small">
-	<img src={pen} alt="Redigera" />
-</div> -->
-
-<!-- {#each $startPage.tiles as tile}
-	<Tile {tile} isUserPage="true" />
-{/each} -->
 <style lang="scss">
-	h6 {
-		margin: -0.5rem 0 0;
-		padding: 0 1rem 1rem;
+	:global(body) {
+		background: radial-gradient(
+				50% 50% at 50% 50%,
+				rgba(0, 66, 122, 0) 0%,
+				rgba(0, 36, 66, 0.1) 100%
+			),
+			linear-gradient(
+				180deg,
+				rgba(0, 0, 0, 0.5) 0%,
+				rgba(129, 129, 129, 0) 66.67%,
+				rgba(255, 255, 255, 0.245) 100%
+			),
+			#00427a !important;
+		height: 100svh;
 	}
-	.imgWrapper {
-		background: hsla(0, 0%, 100%, 1);
-		position: absolute;
-		right: 1.25rem;
-		top: 1.25rem;
-		border-radius: 3rem;
-		cursor: pointer;
-		padding: 0.5rem;
 
-		&.small {
-			img {
-				width: 1.5rem;
-			}
-		}
+	main {
+		--bottom: 8rem;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		inset: 0;
+		min-height: 100svh;
+		width: 100%;
+		//max-width: 32rem;
+		margin: 0 auto var(--bottom);
+		box-sizing: border-box;
 	}
 </style>

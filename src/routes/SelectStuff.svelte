@@ -26,24 +26,24 @@
 <style lang="scss">
 	.form {
 		padding: 1rem 2rem;
-
+		margin: 0 2rem;
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
 
-		justify-self: stretch;
-
+		pointer-events: auto;
 		font-size: 0.875rem;
 
 		// text-align: center;
 
-		background: rgba(255, 255, 255, 0.2);
+		background: rgba(255, 255, 255, 0.3);
 		border-radius: 8px;
 	}
 
 	select {
 		padding: 0.5rem 3rem 0.5rem 1rem;
 		-webkit-appearance: none;
+		border: none;
 		border-radius: 0.25rem;
 		background: url('$lib/assets/chevron/chevron_down_24.svg') #fff;
 		background-repeat: no-repeat;
