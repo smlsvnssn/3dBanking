@@ -1,16 +1,16 @@
 <script>
-	import { World, Debug } from '@threlte/rapier'
-	import { Grid } from '@threlte/extras'
+	import { World, Debug } from '$lib/@threlte_hacked/rapier'
+	import { Grid } from '$lib/@threlte_hacked/extras'
 	import {
 		Canvas,
 		DirectionalLight,
 		OrbitControls,
 		PerspectiveCamera,
-	} from '@threlte/core'
+	} from '$lib/@threlte_hacked/core'
 
 	import Emitter from './Emitter.svelte'
 	import Ground from './Ground.svelte'
-	import { PointLight } from '@threlte/core'
+	import { PointLight } from '$lib/@threlte_hacked/core'
 
 	export let amountOfStuff
 	export let stuff

@@ -1,5 +1,5 @@
 <script>
-	import { useFrame } from '@threlte/core'
+	import { useFrame } from '$lib/@threlte_hacked/core'
 	import { Euler } from 'three'
 	import { Vector3 } from 'three'
 	import Particle from './Particle.svelte'

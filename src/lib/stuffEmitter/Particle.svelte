@@ -1,6 +1,6 @@
 <script>
-	import { GLTF } from '@threlte/extras'
-	import { Collider, RigidBody, Debug } from '@threlte/rapier'
+	import { GLTF } from '$lib/@threlte_hacked/extras'
+	import { Collider, RigidBody, Debug } from '$lib/@threlte_hacked/rapier'
 
 	export let stuff
 	export let position

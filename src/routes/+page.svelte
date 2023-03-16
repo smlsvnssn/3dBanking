@@ -1,4 +1,5 @@
 <script>
+	export const prerender = true
 	import '../style.css'
 	import ThreeDBanking from './ThreeDBanking.svelte'
 </script>

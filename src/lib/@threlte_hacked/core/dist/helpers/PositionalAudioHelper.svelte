@@ -1,0 +1,20 @@
+<script>
+	import { PositionalAudio } from 'three'
+	import { PositionalAudioHelper as ThreePositionalAudioHelper } from '../hacked_three_jsm_examples/helpers/PositionalAudioHelper.js'
+	import Object3DInstance from '../instances/Object3DInstance.svelte'
+	import { useParent } from '../internal/HierarchicalObject.svelte'
+	const parent = useParent()
+	let helper
+	if (!($parent instanceof PositionalAudio)) {
+		console.warn(
+			'<PositionalAudioHelper> can only be used as a direct child of <PositionalAudio>',
+		)
+	} else {
+		helper = new ThreePositionalAudioHelper($parent)
+	}
+</script>
+
+{#if helper}
+	<!-- Force disposal as helper is not user-provided -->
+	<Object3DInstance dispose object={helper} />
+{/if}
