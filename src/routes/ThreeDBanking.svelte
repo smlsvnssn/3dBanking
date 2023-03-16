@@ -43,9 +43,9 @@
 			name: 'Färska hälleflundror',
 			price: 3600,
 			model: halibut,
-			boxSize: [1, 0.3, 3],
+			boxSize: [0.7, 0.2, 2.3],
 			position: { y: 0 },
-			scale: 0.05,
+			scale: 0.03,
 		},
 		{
 			name: 'Elgitarrer',
@@ -75,9 +75,9 @@
 			name: 'Hörnsoffor',
 			price: 12900,
 			model: sofa,
-			boxSize: [2.5, 0.75, 2.5],
-			position: { x: 3, z: -3, y: -0.7 },
-			scale: 4,
+			boxSize: [3, 0.9, 3],
+			position: { x: 3.5, z: -3.5, y: -0.9 },
+			scale: 5,
 		},
 	]
 

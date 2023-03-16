@@ -7,7 +7,7 @@
 	export let rotation
 </script>
 
-<!-- <Debug /> -->
+<Debug />
 <RigidBody type={'dynamic'} {position} {rotation}>
 	<Collider shape={'cuboid'} args={stuff.boxSize} />
 	<GLTF
