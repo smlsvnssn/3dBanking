@@ -14,6 +14,27 @@
 	import sofa from '$lib/models/Sofa.glb'
 	import shoe from '$lib/models/Trainer.glb'
 
+	import * as knobby from 'svelte-knobby'
+
+	const controls = knobby.panel({
+		$label: 'På kontot',
+
+		lön: {
+			$label: 'Lönekontot',
+			value: 35000,
+			min: 0,
+			max: 100000,
+			step: 1,
+		},
+		spar: {
+			$label: 'Sparkontot',
+			value: 250000,
+			min: 0,
+			max: 1000000,
+			step: 1,
+		},
+	})
+
 	const stuff = [
 		{
 			name: 'Chipspåsar',
@@ -82,12 +103,17 @@
 	]
 
 	const accounts = [
-		{ name: 'Lönekontot', amount: 36419 },
-		{ name: 'Sparkontot', amount: 259412 },
+		{ name: 'Lönekontot', amount: 0 },
+		{ name: 'Sparkontot', amount: 0 },
 	]
 
 	let selectedStuff = 0
 	let selectedAccount = 0
+
+	$: {
+		accounts[0].amount = $controls.lön
+		accounts[1].amount = $controls.spar
+	}
 
 	$: amountOfStuff =
 		accounts[selectedAccount].amount / stuff[selectedStuff].price

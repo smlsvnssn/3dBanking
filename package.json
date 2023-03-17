@@ -33,6 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"svelte-knobby": "^0.3.4",
 		"troika-three-text": "^0.47.1"
 	}
 }

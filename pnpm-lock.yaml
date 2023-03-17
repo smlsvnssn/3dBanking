@@ -16,6 +16,7 @@ specifiers:
   svelte: ^3.57.0
   svelte-check: ^2.10.3
   svelte-dnd-action: ^0.9.22
+  svelte-knobby: ^0.3.4
   svelte-preprocess: ^4.10.7
   three: ^0.150.1
   troika-three-text: ^0.47.1
@@ -23,6 +24,7 @@ specifiers:
   vite: ^3.2.5
 
 dependencies:
+  svelte-knobby: 0.3.4_svelte@3.57.0
   troika-three-text: 0.47.1_three@0.150.1
 
 devDependencies:
@@ -345,6 +347,10 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
+
+  /bezier-easing/2.1.0:
+    resolution: {integrity: sha512-gbIqZ/eslnUFC1tjEvtz0sgx+xTK20wDnYMIA27VA04R7w6xxXQPZDbibjA9DTWZRA2CXtwHykkVzlCaAJAZig==}
+    dev: false
 
   /bidi-js/1.0.2:
     resolution: {integrity: sha512-rzSy/k7WdX5zOyeHHCOixGXbCHkyogkxPKL2r8QtzHmVQDiWCXUWa18bLdMWT9CYMLOYTjWpTHawuev2ouYJVw==}
@@ -1336,6 +1342,17 @@ packages:
       svelte: 3.57.0
     dev: true
 
+  /svelte-knobby/0.3.4_svelte@3.57.0:
+    resolution: {integrity: sha512-JK8BkZfktZs4tPtgpvagCu80kwL0C4LMtYCBWH1Ki5ZCFDAY2K84qLJdWr6i23HgvJYqzYYTBQ1LsM82kh9mxA==}
+    peerDependencies:
+      svelte: ^3.34.0
+    dependencies:
+      bezier-easing: 2.1.0
+      svelte: 3.57.0
+      svelte-undo: 1.0.2_svelte@3.57.0
+      yootils: 0.3.1
+    dev: false
+
   /svelte-preprocess/4.10.7_wkdgp32a7s6524odeddpfzb52q:
     resolution: {integrity: sha512-sNPBnqYD6FnmdBrUmBCaqS00RyCsCpj2BG58A1JBswNF7b0OKviwxqVrOL/CKyJrLSClrSeqQv5BXNg2RUbPOw==}
     engines: {node: '>= 9.11.2'}
@@ -1387,10 +1404,17 @@ packages:
       typescript: 4.9.5
     dev: true
 
+  /svelte-undo/1.0.2_svelte@3.57.0:
+    resolution: {integrity: sha512-k8W2RYKJM/kpA0bfSk0bjX/vhC705/2V1T/ew7U8c8wMkVS2f0wajCGokLH/zfZC5/N84bwPdAQvGte6LWBr7Q==}
+    peerDependencies:
+      svelte: ^3
+    dependencies:
+      svelte: 3.57.0
+    dev: false
+
   /svelte/3.57.0:
     resolution: {integrity: sha512-WMXEvF+RtAaclw0t3bPDTUe19pplMlfyKDsixbHQYgCWi9+O9VN0kXU1OppzrB9gPAvz4NALuoca2LfW2bOjTQ==}
     engines: {node: '>= 8'}
-    dev: true
 
   /tar/6.1.13:
     resolution: {integrity: sha512-jdIBIN6LTIe2jqzay/2vtYLlBHa3JF42ot3h1dW8Q0PaAG4v8rm0cvpVePtau5C6OKXGGcgO9q2AMNSWxiLqKw==}
@@ -1578,3 +1602,7 @@ packages:
   /yootils/0.0.16:
     resolution: {integrity: sha512-aIVecm5ucOzwhtKbl0zkfg0ZSOUR9c2da0k8cIc9umjjzkvVCWUUX/UHZ1CLPsv4wmJLqt0aWeLB7p9n9JDwYQ==}
     dev: true
+
+  /yootils/0.3.1:
+    resolution: {integrity: sha512-A7AMeJfGefk317I/3tBoUYRcDcNavKEkpiPN/nQsBz/viI2GvT7BtrqdPD6rGqBFN8Ax7v4obf+Cl32JF9DDVw==}
+    dev: false

@@ -24,8 +24,8 @@
 		</svg>
 		<small>
 			{ö.prettyNumber(Math.abs(percent), 1)}% {percent >= 0
-				? 'mer'
-				: 'mindre'} än förra månaden
+				? 'fler'
+				: 'färre'} än förra månaden
 		</small>
 	</div>
 </div>
