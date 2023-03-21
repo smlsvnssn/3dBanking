@@ -157,6 +157,7 @@
 		color: var(--white);
 		margin: 8rem auto;
 		max-width: 32rem;
+		perspective: 20rem;
 	}
 
 	button {
@@ -172,7 +173,7 @@
 		font-weight: 700;
 		transition: all 0.3s;
 		&:hover {
-			transform: scale(1.1);
+			transform: scale(1.1) rotateX(22.5deg);
 			background: var(--sky);
 		}
 	}
