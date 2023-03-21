@@ -4,6 +4,8 @@
 	import Logo from './Logo.svelte'
 	import StuffEmitter from '$lib/stuffEmitter/StuffEmitter.svelte'
 	import * as ö from 'ouml'
+	import { fly } from 'svelte/transition'
+	import { backOut, backIn } from 'svelte/easing'
 
 	import burger from '$lib/models/Hamburger.glb'
 	import bike from '$lib/models/Bike.glb'
@@ -13,27 +15,7 @@
 	import halibut from '$lib/models/Halibut.glb'
 	import sofa from '$lib/models/Sofa.glb'
 	import shoe from '$lib/models/Trainer.glb'
-
-	// import * as knobby from 'svelte-knobby'
-
-	// const controls = knobby.panel({
-	// 	$label: 'På kontot',
-
-	// 	lön: {
-	// 		$label: 'Lönekontot',
-	// 		value: 35000,
-	// 		min: 0,
-	// 		max: 100000,
-	// 		step: 1,
-	// 	},
-	// 	spar: {
-	// 		$label: 'Sparkontot',
-	// 		value: 250000,
-	// 		min: 0,
-	// 		max: 1000000,
-	// 		step: 1,
-	// 	},
-	// })
+	import Slider from '../lib/Slider.svelte'
 
 	const stuff = [
 		{
@@ -102,39 +84,96 @@
 		},
 	]
 
-	const accounts = [
-		{ name: 'Lönekontot', amount: 35912 },
-		{ name: 'Sparkontot', amount: 250518 },
-	]
+	const accounts = [{ name: 'Lönekontot' }, { name: 'Sparkontot' }]
 
 	let selectedStuff = 0
 	let selectedAccount = 0
+	let lön = 35000
+	let spar = 200000
 
-	// $: {
-	// 	accounts[0].amount = $controls.lön
-	// 	accounts[1].amount = $controls.spar
-	// }
+	let intro = true
+
+	$: {
+		accounts[0].amount = lön
+		accounts[1].amount = spar
+	}
 
 	$: amountOfStuff =
 		accounts[selectedAccount].amount / stuff[selectedStuff].price
 </script>
 
-<Logo />
+<Logo bind:intro />
 
-<StuffEmitter stuff={stuff[selectedStuff]} {amountOfStuff} />
+<StuffEmitter
+	stuff={stuff[selectedStuff]}
+	amountOfStuff={!intro && amountOfStuff}
+/>
 
-<div class="wrapper">
-	<SelectStuff {stuff} {accounts} bind:selectedStuff bind:selectedAccount />
-	<AmountOfStuff name={stuff[selectedStuff].name} {amountOfStuff} />
-</div>
+{#if intro}
+	<div
+		class="wrapper"
+		in:fly={{ x: -200, duration: 600, delay: 700, easing: backOut }}
+		out:fly={{ x: 200, duration: 600, easing: backIn }}
+	>
+		<Slider
+			title="Hur mycket har du på lönekontot ungefär?"
+			max="100000"
+			bind:value={lön}
+		/>
+		<Slider
+			title="Hur mycket har du på sparkontot ungefär?"
+			max="1000000"
+			bind:value={spar}
+		/>
+		<button on:click={() => (intro = false)}>3Dfiera</button>
+	</div>
+{:else}
+	<div
+		class="wrapper"
+		in:fly={{ x: -200, duration: 600, delay: 700, easing: backOut }}
+		out:fly={{ x: 200, duration: 600, easing: backIn }}
+	>
+		<SelectStuff
+			{stuff}
+			{accounts}
+			bind:selectedStuff
+			bind:selectedAccount
+		/>
+		<AmountOfStuff name={stuff[selectedStuff].name} {amountOfStuff} />
+	</div>
+{/if}
 
 <style lang="scss">
 	.wrapper {
 		pointer-events: none;
 		position: absolute;
 		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		gap: 1.5rem;
+
 		color: var(--white);
 		margin: 8rem auto;
 		max-width: 32rem;
+	}
+
+	button {
+		pointer-events: all;
+		flex: 0 1 auto;
+		margin: 0 2rem;
+		text-align: left;
+		padding: 1rem 2rem;
+		border-radius: 8px;
+		background: var(--blue);
+		border: none;
+		color: var(--white);
+		font-weight: 700;
+		transition: all 0.3s;
+		&:hover {
+			transform: scale(1.1);
+			background: var(--sky);
+		}
 	}
 </style>

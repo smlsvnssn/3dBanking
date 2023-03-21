@@ -31,6 +31,8 @@
 		flex-direction: column;
 		gap: 0.5rem;
 
+		width: 100%;
+
 		pointer-events: auto;
 		font-size: 0.875rem;
 
@@ -43,6 +45,7 @@
 	select {
 		padding: 0.5rem 3rem 0.5rem 1rem;
 		-webkit-appearance: none;
+		cursor: pointer;
 		border: none;
 		border-radius: 0.25rem;
 		background: url('$lib/assets/chevron/chevron_down_24.svg') #fff;

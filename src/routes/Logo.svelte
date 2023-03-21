@@ -1,4 +1,9 @@
+<script>
+	export let intro
+</script>
+
 <svg
+	on:click={() => (intro = !intro)}
 	width="153"
 	height="31"
 	viewBox="0 0 153 31"
@@ -130,5 +135,6 @@
 		margin: 1.5rem 1rem;
 		position: absolute;
 		top: 0;
+		cursor: pointer;
 	}
 </style>

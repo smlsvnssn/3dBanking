@@ -32,7 +32,7 @@
 
 <style lang="scss">
 	.amountOfStuff {
-		margin-top: 3rem;
+		margin-top: 1.5rem;
 		.counter {
 			text-align: center;
 			margin-top: 1rem;
