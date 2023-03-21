@@ -16,6 +16,7 @@
 	import sofa from '$lib/models/Sofa.glb'
 	import shoe from '$lib/models/Trainer.glb'
 	import Slider from '../lib/Slider.svelte'
+	import { onMount } from 'svelte'
 
 	const stuff = [
 		{
@@ -92,6 +93,9 @@
 	let spar = 200000
 
 	let intro = true
+	let firstRun = true
+
+	onMount(() => (firstRun = false))
 
 	$: {
 		accounts[0].amount = lön
@@ -109,11 +113,11 @@
 	amountOfStuff={!intro && amountOfStuff}
 />
 
-{#if intro}
+{#if intro && !firstRun}
 	<div
 		class="wrapper"
-		in:fly={{ x: -200, duration: 600, delay: 700, easing: backOut }}
-		out:fly={{ x: 200, duration: 600, easing: backIn }}
+		in:fly={{ y: -200, duration: 600, delay: 700, easing: backOut }}
+		out:fly={{ y: 200, duration: 600, easing: backIn }}
 	>
 		<Slider
 			title="Hur mycket har du på lönekontot ungefär?"
@@ -127,11 +131,11 @@
 		/>
 		<button on:click={() => (intro = false)}>3Dfiera</button>
 	</div>
-{:else}
+{:else if !intro}
 	<div
 		class="wrapper"
-		in:fly={{ x: -200, duration: 600, delay: 700, easing: backOut }}
-		out:fly={{ x: 200, duration: 600, easing: backIn }}
+		in:fly={{ y: -200, duration: 600, delay: 700, easing: backOut }}
+		out:fly={{ y: 200, duration: 600, easing: backIn }}
 	>
 		<SelectStuff
 			{stuff}

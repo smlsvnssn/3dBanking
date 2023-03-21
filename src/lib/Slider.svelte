@@ -36,7 +36,7 @@
 <style lang="scss">
 	div {
 		pointer-events: all;
-		padding: 1rem 2rem;
+		padding: 1rem 2rem 1.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
