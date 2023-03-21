@@ -97,6 +97,11 @@
 				cursor: pointer;
 				background: var(--sky);
 				box-shadow: 0 0.25rem 0.5rem #00000022;
+				transition: all 0.3s;
+				&:hover {
+					transform: scale(1.1);
+					background: var(--sky);
+				}
 			}
 		}
 
