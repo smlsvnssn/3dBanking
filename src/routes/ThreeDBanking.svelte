@@ -93,9 +93,9 @@
 	let spar = 200000
 
 	let intro = true
-	let firstRun = true
+	let firstLoad = true
 
-	onMount(() => (firstRun = false))
+	onMount(() => (firstLoad = false))
 
 	$: {
 		accounts[0].amount = lön
@@ -113,23 +113,33 @@
 	amountOfStuff={!intro && amountOfStuff}
 />
 
-{#if intro && !firstRun}
+{#if intro && !firstLoad}
 	<div
 		class="wrapper"
 		in:fly={{ y: -200, duration: 600, delay: 700, easing: backOut }}
 		out:fly={{ y: 200, duration: 600, easing: backIn }}
 	>
 		<Slider
+			transIn={{ y: -200, duration: 600, delay: 900, easing: backOut }}
+			transOut={{ y: 200, duration: 600, easing: backIn }}
 			title="Hur mycket har du på lönekontot ungefär?"
 			max="100000"
 			bind:value={lön}
 		/>
 		<Slider
+			transIn={{ y: -200, duration: 600, delay: 800, easing: backOut }}
+			transOut={{ y: 200, duration: 500, easing: backIn }}
 			title="Hur mycket har du på sparkontot ungefär?"
 			max="1000000"
 			bind:value={spar}
 		/>
-		<button on:click={() => (intro = false)}>3Dfiera</button>
+		<button
+			on:click={() => (intro = false)}
+			in:fly={{ y: -200, duration: 600, delay: 700, easing: backOut }}
+			out:fly={{ y: 200, duration: 400, easing: backIn }}
+		>
+			3Dfiera
+		</button>
 	</div>
 {:else if !intro}
 	<div

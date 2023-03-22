@@ -7,13 +7,16 @@
 	export let max = 100
 	export let step = 1000
 
+	export let transIn
+	export let transOut
+
 	// sanitize
 	$: value = Math.max(min, Math.min(value, max))
 
 	/*- (value % step)*/
 </script>
 
-<div>
+<div in:fly={transIn} out:fly={transOut}>
 	<legend> {title} </legend><span
 		><input
 			type="range"
