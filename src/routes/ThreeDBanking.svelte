@@ -4,6 +4,7 @@
 	import Logo from './Logo.svelte'
 	import StuffEmitter from '$lib/stuffEmitter/StuffEmitter.svelte'
 	import * as ö from 'ouml'
+
 	import { fly } from 'svelte/transition'
 	import { backOut, backIn } from 'svelte/easing'
 
@@ -172,6 +173,10 @@
 		margin: 8rem auto;
 		max-width: 32rem;
 		perspective: 20rem;
+
+		@media (max-width: 35rem) {
+			margin: 8rem 1.5rem;
+		}
 	}
 
 	button {
