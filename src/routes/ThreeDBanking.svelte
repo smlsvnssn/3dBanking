@@ -16,6 +16,8 @@
 	import halibut from '$lib/models/Halibut.glb'
 	import sofa from '$lib/models/Sofa.glb'
 	import shoe from '$lib/models/Trainer.glb'
+	import latte from '$lib/models/Coffee.glb'
+
 	import Slider from '../lib/Slider.svelte'
 	import { onMount } from 'svelte'
 
@@ -27,6 +29,14 @@
 			boxSize: [0.125, 0.5, 0.3],
 			position: { y: 0 },
 			scale: 0.5,
+		},
+		{
+			name: 'Latte',
+			price: 52,
+			model: latte,
+			boxSize: [0.15, 0.4, 0.15],
+			position: { y: -0.2 },
+			scale: 0.45,
 		},
 		{
 			name: 'Hamburgare',
