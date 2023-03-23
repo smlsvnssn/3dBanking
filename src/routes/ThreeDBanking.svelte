@@ -17,6 +17,7 @@
 	import sofa from '$lib/models/Sofa.glb'
 	import shoe from '$lib/models/Trainer.glb'
 	import latte from '$lib/models/Coffee.glb'
+	import cheese from '$lib/models/Cheese.glb'
 
 	import Slider from '../lib/Slider.svelte'
 	import { onMount } from 'svelte'
@@ -45,6 +46,14 @@
 			boxSize: [0.25, 0.165, 0.25],
 			position: { y: -0.2 },
 			scale: 6,
+		},
+		{
+			name: 'Prästostar',
+			price: 140,
+			model: cheese,
+			boxSize: [0.2, 0.165, 0.2],
+			position: { y: 0 },
+			scale: 4,
 		},
 		{
 			name: 'Skor',
