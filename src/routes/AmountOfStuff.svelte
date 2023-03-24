@@ -1,5 +1,7 @@
 <script>
 	import * as ö from 'ouml'
+	import { fly } from 'svelte/transition'
+	import { backOut, backIn } from 'svelte/easing'
 
 	export let name
 	export let amountOfStuff
@@ -7,7 +9,11 @@
 	let percent = ö.randomNormal(0, 5)
 </script>
 
-<div class="amountOfStuff">
+<div
+	class="amountOfStuff"
+	in:fly={{ y: -200, duration: 600, delay: 700, easing: backOut }}
+	out:fly={{ y: 200, duration: 400, easing: backIn }}
+>
 	<h1 class="display-1">{ö.prettyNumber(amountOfStuff)}</h1>
 	<h2 class="display-3">{name}</h2>
 	<div class="counter">

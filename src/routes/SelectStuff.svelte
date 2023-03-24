@@ -1,5 +1,7 @@
 <script>
 	import * as ö from 'ouml'
+	import { fly } from 'svelte/transition'
+	import { backOut, backIn } from 'svelte/easing'
 
 	export let stuff
 	export let accounts
@@ -7,7 +9,11 @@
 	export let selectedAccount
 </script>
 
-<div class="form">
+<div
+	class="form"
+	in:fly={{ y: -200, duration: 600, delay: 800, easing: backOut }}
+	out:fly={{ y: 200, duration: 500, easing: backIn }}
+>
 	Hur många
 	<select name="stuff" bind:value={selectedStuff} id="stuff-select">
 		{#each stuff as thing, i}
